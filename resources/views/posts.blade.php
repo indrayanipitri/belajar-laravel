@@ -2,15 +2,16 @@
 
 @section('container')
 
+    <h2 class="mt-3">Halaman Blog</h2>
     @foreach ($articles as $article)
         <article class="mt-5"> 
+            
             <h3>
-                <a href="/post/{{ $article["slug"] }}">
-                    {{ $article["judul"] }}
+                <a href="/post/{{ $article->id }}">
+                    {{ $article->title }}
                 </a>
             </h3>
-            <h4>By: {{ $article["author"] }}</h4>
-            <p>{{ $article["text"] }}</p>
+            <p>{{ $article->excerpt }}</p>
         </article>
     @endforeach
 

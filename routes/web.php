@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,59 +27,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-
-    $blog_posts = [
-        [
-            "judul" => "Hai Masa Depan",
-            "slug" => "hai-masa-depan",
-            "author" => "Pitri Indrayani",
-            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non modi optio beatae nesciunt? Ipsa, repellendus. Quos magni doloremque veritatis quisquam totam accusantium dolores nihil debitis dolor commodi consectetur perspiciatis quod impedit labore soluta, illo sunt aut illum fuga cumque quaerat voluptate, aspernatur ipsum quidem. Illum sint, vero illo dolor, dolorem harum fugit, provident sapiente sunt laudantium nisi. Harum assumenda, iste nesciunt ipsam cumque iure commodi impedit, ad nihil laboriosam facilis qui, iusto labore excepturi! Repellendus minima accusantium sint quas."
-
-        ],
-        [
-            "judul" => "Hai Masa Lalu",
-            "slug" => "hai-masa-lalu",
-            "author" => "Pitri Indrayani",
-            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non modi optio beatae nesciunt? Ipsa, repellendus. Quos magni doloremque veritatis quisquam totam accusantium dolores nihil debitis dolor commodi consectetur perspiciatis quod impedit labore soluta, illo sunt aut illum fuga cumque quaerat voluptate, aspernatur ipsum quidem. Illum sint, vero illo dolor, dolorem harum fugit, provident sapiente sunt laudantium nisi. Harum assumenda, iste nesciunt ipsam cumque iure commodi impedit, ad nihil laboriosam facilis qui, iusto labore excepturi! Repellendus minima accusantium sint quas."
-
-        ]
-
-        ];
-    return view('posts', [
-        "articles" => $blog_posts
-    ]);
-});
+Route::get('/blog', [ArticleController::class, 'index']);
 
 
-Route::get('/post/{slug}', function ($slug) {
-
-    $blog_posts = [
-        [
-            "judul" => "Hai Masa Depan",
-            "slug" => "hai-masa-depan",
-            "author" => "Pitri Indrayani",
-            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non modi optio beatae nesciunt? Ipsa, repellendus. Quos magni doloremque veritatis quisquam totam accusantium dolores nihil debitis dolor commodi consectetur perspiciatis quod impedit labore soluta, illo sunt aut illum fuga cumque quaerat voluptate, aspernatur ipsum quidem. Illum sint, vero illo dolor, dolorem harum fugit, provident sapiente sunt laudantium nisi. Harum assumenda, iste nesciunt ipsam cumque iure commodi impedit, ad nihil laboriosam facilis qui, iusto labore excepturi! Repellendus minima accusantium sint quas."
-
-        ],
-        [
-            "judul" => "Hai Masa Lalu",
-            "slug" => "hai-masa-lalu",
-            "author" => "Pitri Indrayani",
-            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut non modi optio beatae nesciunt? Ipsa, repellendus. Quos magni doloremque veritatis quisquam totam accusantium dolores nihil debitis dolor commodi consectetur perspiciatis quod impedit labore soluta, illo sunt aut illum fuga cumque quaerat voluptate, aspernatur ipsum quidem. Illum sint, vero illo dolor, dolorem harum fugit, provident sapiente sunt laudantium nisi. Harum assumenda, iste nesciunt ipsam cumque iure commodi impedit, ad nihil laboriosam facilis qui, iusto labore excepturi! Repellendus minima accusantium sint quas."
-
-        ]
-
-        ];
-    
-    $new_post = [];
-    foreach($blog_posts as $post) {
-        if ($post["slug"] === $slug) {
-            $new_post = $post;
-        }
-    }
-
-    return view('post', [
-        "article" => $new_post
-    ]);
-});
+Route::get('/post/{posting}', [ArticleController::class, 'show']);

@@ -7,7 +7,7 @@
         <article class="mt-5"> 
             
             <h3>
-                <a href="/post/{{ $article->id }}">
+                <a href="/post/{{ $article->slug }}">
                     {{ $article->title }}
                 </a>
             </h3>

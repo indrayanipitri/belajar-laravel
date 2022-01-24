@@ -30,4 +30,4 @@ Route::get('/about', function () {
 Route::get('/blog', [ArticleController::class, 'index']);
 
 
-Route::get('/post/{posting}', [ArticleController::class, 'show']);
+Route::get('/post/{posting:slug}', [ArticleController::class, 'show']);

@@ -11,4 +11,12 @@ class Article extends Model
 
     // protected $fillable = ['title', 'excerpt', 'body'];      // ini boleh diisi
     protected $guarded = ['id'];         //ini yang gak boleh diisi
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

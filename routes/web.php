@@ -3,7 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +31,18 @@ Route::get('/blog', [ArticleController::class, 'index']);
 
 
 Route::get('/post/{posting:slug}', [ArticleController::class, 'show']);
+
+Route::get('/categories', function() {
+    return view('categories', [
+        'title' => 'Post Categories',
+        'categories' => Category::all()
+    ]);
+});
+
+Route::get('/categories/{category:slug}', function(Category $category) {
+    return view('category', [
+        'title' => $category -> name,
+        'articles' => $category -> articles,
+        'category' => $category -> name
+    ]);
+});

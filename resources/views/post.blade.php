@@ -6,6 +6,7 @@
     <h3>
         {{ $article->title }}
     </h3>
+    <p>By. Pitri Indrayani in <a href="/categories/{{ $article->category->slug }}">{{ $article->category->name }}</a></p>
     {!! $article->body !!}
     <div>
         <button class="btn btn-danger"><a href="/blog" style="color:white; text-decoration:none;"> Back </a>  </button>

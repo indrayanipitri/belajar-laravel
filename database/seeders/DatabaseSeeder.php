@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'motivation'
         ]);
 
-        Article::factory(10) -> create();
+        Article::factory(20) -> create();
 
         
         // User::create([

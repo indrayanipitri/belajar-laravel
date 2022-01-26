@@ -2,7 +2,7 @@
 
 @section('container')
 
-    <h2 class="mt-3">Halaman Blog</h2>
+    <h2 class="mt-3">{{ $title }}</h2>
     @foreach ($articles as $article)
         <article class="mt-5 border-bottom pb-4"> 
             

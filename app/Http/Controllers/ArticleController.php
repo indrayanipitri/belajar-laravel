@@ -9,8 +9,9 @@ class ArticleController extends Controller
 {
     public function index () {
         return view('posts', [
+            'title' => 'Post All',
             // "articles" => Article::all()
-            "articles" => Article::latest()->get()
+            "articles" => Article::with(['user', 'category'])->latest()->get()
         ]);
     }
 
